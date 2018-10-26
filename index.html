@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Redis数据管理工具</title>
+    <link rel="stylesheet" href="./redis.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <button id="add">+ add</button>
+        <ol id="redisList">
+        </ol>
+      </div>
+      <div class="content">
+        <div class="content-left">
+          Redis信息：<span id="redisConnectState">未连接</span>
+          <div>
+            <ol id="redisConnectList">
+            </ol>
+          </div>
+        </div>
+        <div class="content-right">          
+          <div class=op-menu>
+            <input style="width:80%" id="redisParam" type="text">
+            <button class="btn btn-normal" id="getDataBtn">执行</button>
+            <!-- <button class="btn btn-cancle" id="gobackBtn">后退</button> -->
+          </div>
+          <div class="dataInfo">
+            <div>数据类型：<span id="dataType"></span></div>
+            <div>Size：<span id="dataSize"></span></div>
+            <div>TTL：<span id="dataTtl"></span></div>
+            <div><button id="delData" class="btn btn-error">删除</button></div>
+          </div>
+          <div class="dataValue">
+            <div id="redisResult"></div>
+          </div>
+          <div class="errorInfoBox">
+            执行结果：<span id="errorInfo"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    <div class="footer">
+        Copyright © 2018 Bell Lee. All rights reserved.
+    </div>
+    <div id="modal-add-redis" style="display:none; position: absolute; width: 0px; height: 0px; top: -9999px;">
+      <div class="el-dialog__wrapper" center="true" style="z-index: 2001;">
+        <div class="el-dialog el-dialog--small" style="top: 15%;">
+          <div class="el-dialog__header">
+            <span class="el-dialog__title">请选择</span>
+          </div>
+          <div class="el-dialog__body">
+            <div class="">
+              <div>
+                <label>名称</label>
+              </div>
+              <div>
+                <input id="redis-config-name" type="text">
+              </div>
+            </div>
+            <div class="">
+              <div>
+                <label>redis配置信息(支持cluster)</label>
+              </div>
+              <div>
+                <textarea id="redis-config-json" cols="50" rows="10"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="el-dialog__footer">
+            <button id="modal-add-confirm" class="btn btn-normal">
+              <span>确定</span>
+            </button>
+            <button id="modal-add-cancle" class="btn btn-cancle">
+              <span>取消</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="v-modal" style="z-index: 2000;"></div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
